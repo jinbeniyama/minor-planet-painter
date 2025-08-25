@@ -21,6 +21,7 @@ A Python library for plotting and visualizing minor planets
   README.md
 ```
 
+## Make figures
 0. Obtain datasets from MPC
 ``` 
 # Orbital elements of all minorplanets (MPCORB.DAT) and NEAs (NEAm00.txt) are saved in ./data
