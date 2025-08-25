@@ -11,6 +11,7 @@ A Python library for plotting and visualizing minor planets
 ```
 ./
   data/
+  fig/
   minor_planet_painter/
     common.py
     ...
