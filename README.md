@@ -29,13 +29,15 @@ wget_MPCORB_NEA.sh
 
 1. Spatial distribution of minor bodies
 ```
-# Plot all minor planets
-plot_sssbs_xy.py
+# Plot all minor planets (output figure is shown below)
+plot_sssb_xy.py 2025-08-25 --range 60
 
 # Plot all minor planets specifying the input file
-plot_asteroid_xy.py --
-
+plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 ```
+
+![Spatial distribution of minor bodies](fig/MPCORB_20250825.jpg)
+
 
 ## Installing
 ```
