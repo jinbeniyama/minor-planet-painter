@@ -45,8 +45,9 @@ plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 ```
 # Plot only NEAs (output figure is shown below)
 plot_sssb_orbelem.py --onlyNEA
-```
 
+# NEA pairs (in prep)
+```
 
 ## Installing
 ```
