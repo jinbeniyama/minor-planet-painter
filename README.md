@@ -41,6 +41,13 @@ plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 ![Spatial distribution of minor bodies](fig/MPCORB_20250825.jpg)
 
 
+2. Orbital elements of minor bodies
+```
+# Plot only NEAs (output figure is shown below)
+plot_sssb_orbelem.py --onlyNEA
+```
+
+
 ## Installing
 ```
 git clone git@github.com:jinbeniyama/minor-planet-painter.git
