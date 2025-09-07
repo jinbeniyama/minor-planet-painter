@@ -49,6 +49,8 @@ plot_sssb_orbelem.py --onlyNEA
 # NEA pairs (in prep)
 ```
 
+![Orbital elements of minor bodies](fig/e_NEA.jpg)
+
 ## Installing
 ```
 git clone git@github.com:jinbeniyama/minor-planet-painter.git
