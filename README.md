@@ -51,6 +51,18 @@ plot_sssb_orbelem.py --onlyNEA
 
 ![Orbital elements of minor bodies](fig/e_NEA.jpg)
 
+
+3. Angular distance of minor bodies
+```
+# Plot all minor planets (output figure is shown below)
+# Not that this is from the Sun, not the Earth.
+plot_sssb_angsize.py 2025-08-25 --out angsize_20250825.jpg
+```
+
+![Angular size of minor bodies](fig/angsize_20250825.jpg)
+
+
+
 ## Installing
 ```
 git clone git@github.com:jinbeniyama/minor-planet-painter.git
