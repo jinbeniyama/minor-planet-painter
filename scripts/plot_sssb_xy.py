@@ -16,7 +16,7 @@ warnings.simplefilter('ignore', ErfaWarning)
 
 from minor_planet_painter.common import (
     MPCORB, jd2utc, utc2jd, get_planet_positions, get_planet_orbits,
-    solve_kepler_eq, mpcepoch2jd
+    solve_kepler_eq, mpcepoch2jd, plot_black
     )
 
 
@@ -35,6 +35,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--MPCORB", default=None, 
         help="Path to MPCORB.DAT")
+    parser.add_argument(
+        "--black", action="store_true", default=False,
+        help="For slides with black background")
     parser.add_argument(
         "--out", type=str, default="MPCORB.jpg", 
         help="Figure name")
@@ -197,6 +200,9 @@ if __name__ == "__main__":
     ax.set_ylim(-r, r)
     ax.set_aspect('equal')
     ax.legend(fontsize=12)
+
+    if args.black:
+        plot_black(ax)
     plt.show(block=False)
     
     print()
