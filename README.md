@@ -33,6 +33,8 @@ wget_MPCORB_NEA.sh
 ```
 # Plot all minor planets (output figure is shown below)
 plot_sssb_xy.py 2025-08-25 --range 60
+# Plot all minor planets, only inner system
+plot_sssb_xy.py 2025-08-25 --range 6
 
 # Plot all minor planets specifying the input file
 plot_sssb_xy.py --MPCORB MPCORB_original.DAT
