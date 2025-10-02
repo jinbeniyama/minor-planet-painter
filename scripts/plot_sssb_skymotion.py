@@ -124,12 +124,22 @@ if __name__ == "__main__":
 
     H_list = np.array(H_list)
     obj_list = np.array(obj_list)
+
     i = np.deg2rad(np.array(i))
     e = np.array(e)
     a = np.array(a)
     H = np.array(H)
 
     # Extract object name and H ================================================
+
+
+    # Add Apophis by hand =====================================================
+    H = np.append(H, 19)
+    obj_list = np.append(obj_list, "Apophis")
+    a = np.append(a, 0.92)
+    e = np.append(e, 0.19)
+    i = np.append(i, 3.34)
+    # Add Apophis by hand =====================================================
 
 
     # Query sky motion ========================================================
