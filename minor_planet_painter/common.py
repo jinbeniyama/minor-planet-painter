@@ -247,3 +247,26 @@ def update_mean_anomaly_longterm(M, n, dt_days, step_days=365.25):
         M_acc += n0 * remainder
         M_t[idx] = M_acc
     return np.mod(M_t, 2*np.pi)
+
+
+def plot_black(ax, text_color='white'):
+    """For slides with black background.
+    """
+    ax.figure.set_facecolor('none')
+    ax.set_facecolor('none')
+
+    ax.tick_params(axis='both', colors=text_color, which='both', direction='in')
+
+    for spine in ax.spines.values():
+        spine.set_color(text_color)
+
+    ax.xaxis.label.set_color(text_color)
+    ax.yaxis.label.set_color(text_color)
+    ax.title.set_color(text_color)
+
+    legend = ax.get_legend()
+    if legend is not None:
+        for text in legend.get_texts():
+            text.set_color(text_color)
+        legend.get_frame().set_facecolor('none')
+        legend.get_frame().set_edgecolor(text_color)
