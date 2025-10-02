@@ -63,6 +63,16 @@ plot_sssb_angsize.py 2025-08-25 --out angsize_20250825.jpg
 
 ![Angular size of minor bodies](fig/angsize_20250825.jpg)
 
+4. Sky motion of minor bodies
+```
+# Plot all minor planets (output figure is shown below)
+# It takes a few minutes for only 500 bodies
+plot_sssb_skymotion.py --out skymotion_20250825.jpg --Nobj 500
+```
+<p align="center">
+  <img src="/fig/angsize_20250825.jpg" width="600"/><br>
+  <em>Sky motion of minor bodies. The NEA with a semimajor axis of about 1 is (99942) Apophis.</em>
+</p>
 
 
 ## Installing
