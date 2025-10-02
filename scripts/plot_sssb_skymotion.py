@@ -128,8 +128,9 @@ if __name__ == "__main__":
     e = np.array(e)
     a = np.array(a)
     H = np.array(H)
+
     # Extract object name and H ================================================
-     
+
 
     # Query sky motion ========================================================
     # t_elapse ~ 1 m when N = 100
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     for obj in obj_list:
         res = fetch_ephemeris(obj, obscode, epoch_jd)
         results.append(res)
-    df = pd.concat(results, ignore_index=True)
+    df = pd.concat(results)
     vel = df["vel"].to_numpy()
     # Query sky motion ========================================================
 
@@ -175,22 +176,40 @@ if __name__ == "__main__":
     N_others = N_all - (N_nea + N_mba + N_hilda + N_trojan + N_tno)
     
     # Labels
-    legend_labels = [
-        f"NEA (q<1.3): N={N_nea}",
-        f"MBA (q>=1.3, a=1.8–3.3): N={N_mba}",
-        f"Hilda (q$\geq$1.3, a=3.7-4.0, e=0.07-0.30): N={N_hilda}",
-        f"Trojan (q$\geq$1.3, a=5.0-5.4): N={N_trojan}",
-        f"TNO (q$\geq$1.3, a$\geq$30.0): N={N_tno}",
-        f"Others: N={N_others}"
-    ]
+    label_list = []
+    if N_nea > 0:
+        label_list.append(f"NEA (q<1.3): N={N_nea}")
+    else:
+        del cols[-1]
+    if N_mba > 0:
+        label_list.append(f"MBA (q>=1.3, a=1.8–3.3): N={N_mba}")
+    else:
+        del cols[-1]
+    if N_hilda > 0:
+        label_list.append(f"Hilda (q$\geq$1.3, a=3.7-4.0, e=0.07-0.30): N={N_hilda}")
+    else:
+        del cols[-1]
+    if N_trojan > 0:
+        label_list.append(f"Trojan (q$\geq$1.3, a=5.0-5.4): N={N_trojan}")
+    else:
+        del cols[-1]
+    if N_tno > 0:
+        label_list.append(f"TNO (q$\geq$1.3, a$\geq$30.0): N={N_tno}")
+    else:
+        del cols[-1]
+    if N_others > 0:
+        label_list.append(f"Others: N={N_others}")
+    else:
+        del cols[-1]
 
     fig = plt.figure(figsize=(12, 6))
     ax = fig.add_axes([0.1, 0.15, 0.85, 0.75])
 
-    ax.scatter(a, vel, s=1.5, color=colors, alpha=0.5, label='_nolegend_')
-    # TODO: Add
-    #for label, color in zip(legend_labels, cols):
-    #    ax.scatter([], [], color=color, label=label, s=20)
+    ax.scatter(
+        a, vel, s=1.5, color=colors, alpha=0.5, label='_nolegend_')
+    # Dummy to show legends
+    for label, color in zip(label_list, cols):
+        ax.scatter([], [], color=color, label=label, s=20)
 
     ax.set_xlabel('Semimajor axis [au]', fontsize=20)
     ax.set_ylabel('Sky motion [arcsec/s]', fontsize=20)
@@ -198,7 +217,7 @@ if __name__ == "__main__":
     ax.set_title(f'{epoch_utc} UTC')
     ax.legend(fontsize=12)
     ax.set_yscale("log")
-    plt.show()
+    plt.show(block=False)
     
     print()
     ans = input("  Save figure? (y/n): ").strip().lower()
