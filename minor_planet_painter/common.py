@@ -13,6 +13,15 @@ DATA = os.path.normpath(os.path.join(BASE, "../data"))
 ## Path to MPCORB
 MPCORB = os.path.normpath(os.path.join(DATA, "MPCORB.DAT"))
 
+mycolor = [
+    # red
+    "#AD002D", 
+    # blue
+    "#1e50a2", 
+    # green
+    "#69821b", 
+    ]
+
 
 def jd2utc(jd):
     """Convert jd to utc in '%Y-%m-%dT%H:%M:%S.%f'.
@@ -270,3 +279,5 @@ def plot_black(ax, text_color='white'):
             text.set_color(text_color)
         legend.get_frame().set_facecolor('none')
         legend.get_frame().set_edgecolor(text_color)
+
+
