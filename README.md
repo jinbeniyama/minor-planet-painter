@@ -22,6 +22,11 @@ A Python library for plotting and visualizing minor planets
   README.md
 ```
 
+## Set up
+```
+pipx install --editable . --force
+```
+
 ## Make figures
 0. Obtain datasets from MPC
 ``` 

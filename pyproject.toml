@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minor_planet_painter"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "astropy",
+    "astroquery",
+    "matplotlib",
+    "scipy",
+    "pandas",
+]
+
+[tool.setuptools.packages.find]
+include = ["minor_planet_painter*"]  
+
+[tool.setuptools] 
+script-files = [ "scripts/plot_sssb_angsize.py"]
