@@ -19,4 +19,7 @@ dependencies = [
 include = ["minor_planet_painter*"]  
 
 [tool.setuptools] 
-script-files = [ "scripts/plot_sssb_angsize.py"]
+script-files = [
+    "scripts/plot_sssb_angsize.py",
+    "scripts/plot_sssb_Psid_Psyn.py",
+    ]
