@@ -11,10 +11,7 @@ from erfa import ErfaWarning
 # To suppress ErfaWarning: ERFA function "dtf2d" yielded 1 of "dubious year (Note 6)"
 warnings.simplefilter('ignore', ErfaWarning)
 
-from minor_planet_painter.common import (
-    MPCORB, jd2utc, utc2jd, get_planet_positions, get_planet_orbits,
-    solve_kepler_eq, mpcepoch2jd
-    )
+from minor_planet_painter import MPCORB, mycolor
 
 
 if __name__ == "__main__":
@@ -66,6 +63,7 @@ if __name__ == "__main__":
     # Plot ====================================================================
     # Masks for classification
     e = np.array(e)
+    i = np.array(i)
     a = np.array(a)
     q = a * (1 - e) 
     mask_nea = (q < 1.3)
@@ -106,20 +104,53 @@ if __name__ == "__main__":
     ]
 
     # 1. eccentricity
-    fig = plt.figure(figsize=(8, 6))
-    ax = fig.add_axes([0.15, 0.15, 0.82, 0.82])
     bin_e = np.arange(0, 1.01, 0.01)
+    # Do not plot retrograde bodies
+    bin_i = np.arange(0, 91, 1)
+
+    fig = plt.figure(figsize=(12, 8))
+    ax_e = fig.add_axes([0.15, 0.60, 0.82, 0.35])
+    ax_i = fig.add_axes([0.15, 0.12, 0.82, 0.35])
+
 
     if args.onlyNEA:
-        ax.hist(
+        ax_e.hist(
             e[mask_nea], histtype="step", bins=bin_e, color="black", 
             label=f"NEA N={N_nea}")
+        ax_i.hist(
+            i[mask_nea], histtype="step", bins=bin_i, color="black", 
+            label=f"NEA N={N_nea}")
+        ax_e.set_ylabel('N')
+        ax_i.set_ylabel('N')
     else:
-        pass
+        col_mba = mycolor[0]
+        col_nea = mycolor[1]
+        ax_e.hist(
+            e[mask_mba], histtype="step", ls="solid", bins=bin_e, color=col_mba, 
+            label=f"MBA N={N_mba}", density=True)
+        ax_i.hist(
+            i[mask_mba], histtype="step", ls="solid", bins=bin_i, color=col_mba, 
+            label=f"MBA N={N_mba}", density=True)
+        ax_e.hist(
+            e[mask_nea], histtype="step", ls="dashed", bins=bin_e, color=col_nea, 
+            label=f"NEA N={N_nea}", density=True)
+        ax_i.hist(
+            i[mask_nea], histtype="step", ls="dashed", bins=bin_i, color=col_nea, 
+            label=f"NEA N={N_nea}", density=True)
+        ax_e.set_ylabel('Normalized fraction')
+        ax_i.set_ylabel('Normalized fraction')
 
-    ax.set_xlabel('Eccentricity')
-    ax.set_ylabel('N')
-    ax.legend(fontsize=12)
+    ax_e.set_xlabel('Eccentricity')
+    ax_e.legend(fontsize=12)
+
+    ax_i.set_xlabel('Inclination [deg]')
+    ax_i.legend(fontsize=12)
+
+    # Align 
+    x, y = -0.08, 0.5
+    ax_e.yaxis.set_label_coords(x, y)
+    ax_i.yaxis.set_label_coords(x, y)
+
     plt.show(block=False)
     
     ans = input("  Save figure? (y/n): ").strip().lower()
@@ -133,6 +164,6 @@ if __name__ == "__main__":
             print("  Not saved. Exiting.")
         plt.close()
 
-    # 2. semimajor axis 
+    # 2. Inclination
     # 3. and so on......
     # Plot ====================================================================
