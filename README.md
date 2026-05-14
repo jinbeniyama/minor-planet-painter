@@ -80,6 +80,12 @@ plot_sssb_skymotion.py --out skymotion_20250825.jpg --Nobj 500
 </p>
 
 
+5. Psid vs. Psyn
+```
+plot_sssb_Psid_Psyn.py
+```
+
+
 ## Installing
 ```
 git clone git@github.com:jinbeniyama/minor-planet-painter.git
