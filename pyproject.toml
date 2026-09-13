@@ -22,4 +22,5 @@ include = ["minor_planet_painter*"]
 script-files = [
     "scripts/plot_sssb_angsize.py",
     "scripts/plot_sssb_Psid_Psyn.py",
+    "scripts/plot_lcdb_animation.py",
     ]

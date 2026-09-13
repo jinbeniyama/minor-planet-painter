@@ -85,6 +85,10 @@ plot_sssb_skymotion.py --out skymotion_20250825.jpg --Nobj 500
 plot_sssb_Psid_Psyn.py
 ```
 
+6. Lightcurve database
+```
+plot_lcdb_animation.py data/LCLIST_PUB_CURRENT_2023Oct/lc_summary_pub.txt
+```
 
 ## Installing
 ```
