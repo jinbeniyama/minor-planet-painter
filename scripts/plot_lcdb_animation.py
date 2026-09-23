@@ -154,6 +154,12 @@ if __name__ == "__main__":
         "file", type=str,
         help="path to text file"
     )
+    parser.add_argument(
+        '--format',
+        choices=['mp4', 'gif'],
+        default='mp4',
+        help='Output animation format (default: mp4)'
+    )
     args = parser.parse_args()
 
     df, n_skip = handle_LCDB(args.file)
@@ -281,15 +287,23 @@ if __name__ == "__main__":
         ax.grid(True, which='both', linestyle='--', alpha=0.5)
 
 
-    # Create animation with 1 frame per second (interval = 1000 ms)
+    # Create animation with 1 frame per second
     ani = animation.FuncAnimation(
         fig, update, frames=years, interval=1000, repeat=False
     )
-
-    # 4. Save as MP4 (DPI = 200)
-    output_file = 'asteroid_rotation_animation.mp4'
-    print(f'Saving animation to {output_file}...')
-    ani.save(output_file, writer='ffmpeg', fps=1, dpi=200)
+    
+    # Save animation
+    if args.format == 'mp4':
+        output_file = 'asteroid_rotation_animation.mp4'
+        print(f'Saving animation to {output_file}...')
+        ani.save(output_file, writer='ffmpeg', fps=1, dpi=200)
+    
+    elif args.format == 'gif':
+        output_file = 'asteroid_rotation_animation.gif'
+        print(f'Saving animation to {output_file}...')
+        ani.save(output_file, writer='pillow', fps=1, dpi=100)
+    
     print('Done!')
-
+    
     plt.close()
+
