@@ -98,7 +98,10 @@ plot_sssb_Psid_Psyn.py
 ```
 plot_lcdb_animation.py data/LCLIST_PUB_CURRENT_2023Oct/lc_summary_pub.txt
 ```
-<p align="center"> <video src="/fig/asteroid_rotation_animation.mp4" width="600" controls></video><br> <em>History of rotation period determinations.</em> </p> ```
+<p align="center">
+  <img src=/fig/asteroid_rotation_animation.gif width="600"/><br>
+  <em>History of rotation period determinations.</em>
+</p>
 
 
 ## Installing
