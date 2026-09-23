@@ -29,7 +29,7 @@ pipx install --editable . --force
 
 ## Make figures
 
-0. Preparation
+### 0. Preparation
 
 - MPC
   Obtain dataset from MPC. Orbital elements of all minorplanets (`MPCORB.DAT`) and NEAs (`NEAm00.txt`) are saved in `./data`.
@@ -43,7 +43,7 @@ Download the latest data release, 2023 Oct, from [here](https://minplanobs.org/M
 The input file used in this repository is `lc_summary_pub.txt`.
 
 
-1. Spatial distribution of minor bodies
+### 1. Spatial distribution of minor bodies
 ```
 # Plot all minor planets (output figure is shown below)
 plot_sssb_xy.py 2025-08-25 --range 60
@@ -57,7 +57,7 @@ plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 ![Spatial distribution of minor bodies](fig/MPCORB_20250825.jpg)
 
 
-2. Orbital elements of minor bodies
+### 2. Orbital elements of minor bodies
 ```
 # Plot only NEAs (output figure is shown below)
 plot_sssb_orbelem.py --onlyNEA
@@ -68,7 +68,7 @@ plot_sssb_orbelem.py --onlyNEA
 ![Orbital elements of minor bodies](fig/e_NEA.jpg)
 
 
-3. Angular distance of minor bodies
+### 3. Angular distance of minor bodies
 ```
 # Plot all minor planets (output figure is shown below)
 # Not that this is from the Sun, not the Earth.
@@ -77,7 +77,7 @@ plot_sssb_angsize.py 2025-08-25 --out angsize_20250825.jpg
 
 ![Angular size of minor bodies](fig/angsize_20250825.jpg)
 
-4. Sky motion of minor bodies
+### 4. Sky motion of minor bodies
 ```
 # Plot all minor planets (output figure is shown below)
 # It takes a few minutes for only 500 bodies
@@ -89,15 +89,17 @@ plot_sssb_skymotion.py --out skymotion_20250825.jpg --Nobj 500
 </p>
 
 
-5. Psid vs. Psyn
+### 5. Psid vs. Psyn
 ```
 plot_sssb_Psid_Psyn.py
 ```
 
-6. Lightcurve database
+### 6. Animation of the history of rotation period determinations
 ```
 plot_lcdb_animation.py data/LCLIST_PUB_CURRENT_2023Oct/lc_summary_pub.txt
 ```
+<p align="center"> <video src="/fig/asteroid_rotation_animation.mp4" width="600" controls></video><br> <em>History of rotation period determinations.</em> </p> ```
+
 
 ## Installing
 ```
