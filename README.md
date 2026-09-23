@@ -28,17 +28,18 @@ pipx install --editable . --force
 ```
 
 ## Make figures
+
 0. Preparation
 
 - MPC
-Obtain datasef from MPC. Orbital elements of all minorplanets (`MPCORB.DAT`) and NEAs (`NEAm00.txt`) are saved in `./data`.
+  Obtain dataset from MPC. Orbital elements of all minorplanets (`MPCORB.DAT`) and NEAs (`NEAm00.txt`) are saved in `./data`.
 ``` 
 wget_MPCORB_NEA.sh
 ```
 
 - LCDB
 You can download from the [LCDB website](https://minplanobs.org/MPInfo/php/lcdb.php).
-Download The latest data release, 2023 Oct, from [here](https://minplanobs.org/MPInfo/datazips/LCLIST_PUB_CURRENT.zip).
+Download the latest data release, 2023 Oct, from [here](https://minplanobs.org/MPInfo/datazips/LCLIST_PUB_CURRENT.zip).
 The input file used in this repository is `lc_summary_pub.txt`.
 
 
