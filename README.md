@@ -98,6 +98,9 @@ plot_sssb_Psid_Psyn.py
 ```
 plot_lcdb_animation.py data/LCLIST_PUB_CURRENT_2023Oct/lc_summary_pub.txt
 ```
+Note: We assume that the rotation period was determined in the year of discovery, based on the provisional designation. 
+This is a reasonable assumption in most cases for small NEAs, but it is not necessarily correct. Suggestions for a better approach are very welcome.
+
 <p align="center">
   <img src=/fig/asteroid_rotation_animation.gif width="600"/><br>
   <em>History of rotation period determinations.</em>
