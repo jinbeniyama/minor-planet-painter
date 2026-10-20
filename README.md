@@ -110,7 +110,7 @@ This is a reasonable assumption in most cases for small NEAs, but it is not nece
 ```
 Download spectra from, e.g., MITHNEOS website.
 Then plot with a following command:
-plot_sssb_spectra.py data/asteroids_Binzel2019/Data_3.0_805/a000433.visnir.txt data/asteroids_Binzel2019/Data_3.0_805/a003200.visnir.txt --stype S B
+plot_sssb_spectra.py data/asteroids_Binzel2019/Data_3.0_805/a000433.visnir.txt data/asteroids_Binzel2019/Data_3.0_805/a003200.visnir.txt --stype S B --plotcol "black" "grey"
 ```
 
 ## Installing
