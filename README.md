@@ -89,7 +89,7 @@ plot_sssb_skymotion.py --out skymotion_20250825.jpg --Nobj 500
 </p>
 
 
-### 5. Psid vs. Psyn
+### 5. Psid vs. Psyn (in prep.)
 ```
 plot_sssb_Psid_Psyn.py
 ```
@@ -106,6 +106,12 @@ This is a reasonable assumption in most cases for small NEAs, but it is not nece
   <em>History of rotation period determinations.</em>
 </p>
 
+### 7. Plot IRTF spectra
+```
+Download spectra from, e.g., MITHNEOS website.
+Then plot with a following command:
+plot_sssb_spectra.py data/asteroids_Binzel2019/Data_3.0_805/a000433.visnir.txt data/asteroids_Binzel2019/Data_3.0_805/a003200.visnir.txt --stype S B
+```
 
 ## Installing
 ```
