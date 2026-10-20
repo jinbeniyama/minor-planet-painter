@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import classy
 
 
-def plot_spec(irtf_data_list, stypes=None, xnorm=1.0, xrange=(0.7, 2.5), yrange=(0.8, 1.4), out=None):
+def plot_spec(irtf_data_list, stypes=None, plotcolors=None, xnorm=1.0, xrange=(0.7, 2.5), yrange=(0.8, 1.4), out=None):
     """
     Plot reflectance spectra (IRTF) with taxonomic templates
     
@@ -18,6 +18,8 @@ def plot_spec(irtf_data_list, stypes=None, xnorm=1.0, xrange=(0.7, 2.5), yrange=
         List containing (df_irtf, label) pairs.
     stypes : list of str, optional
         Taxonomic types to plot (e.g., ["S", "Q", "B"]).
+    plotcolors : list of str, optional
+        Colors for each observation data.
     xnorm : float
         Normalization wavelength.
     xrange : tuple of float
@@ -66,10 +68,14 @@ def plot_spec(irtf_data_list, stypes=None, xnorm=1.0, xrange=(0.7, 2.5), yrange=
     # -------------------------------------------------------------------------
     # IRTF Observation Data (Multiple)
     # -------------------------------------------------------------------------
-    colors = ["black", "brown", "gray", "magenta", "cyan",]
+    default_colors = ["black", "brown", "gray", "magenta", "cyan"]
 
     for i, (df_irtf, objlabel) in enumerate(irtf_data_list):
-        col_irtf = colors[i % len(colors)]
+        if plotcolors and i < len(plotcolors):
+            col_irtf = plotcolors[i]
+        else:
+            col_irtf = default_colors[i % len(default_colors)]
+
         ax.errorbar(
             df_irtf["w"],
             df_irtf["ref"],
@@ -109,6 +115,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--label", type=str, nargs="*", default=None,
         help="Label(s) for the observation file(s)"
+    )
+    parser.add_argument(
+        "--plotcol", type=str, nargs="*", default=None,
+        help="Color(s) for the observation file(s) (e.g., black black)"
     )
     parser.add_argument(
         "--stype", type=str, nargs="*", default=None,
@@ -183,6 +193,7 @@ if __name__ == "__main__":
     plot_spec(
         irtf_data_list, 
         stypes=args.stype, 
+        plotcolors=args.plotcol,
         xnorm=args.xnorm, 
         xrange=tuple(args.xrange), 
         yrange=tuple(args.yrange), 
