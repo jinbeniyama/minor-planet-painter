@@ -90,12 +90,15 @@ Make sure that you are using the intended Python environment before installing.
 
 - MPC
 
-  Obtain datasets from MPC. Orbital elements of all minor planets (`MPCORB.DAT`) and NEAs (`NEAm00.txt`) are saved in `./data`.
-  It may take a few minutes to download `MPCORB.DAT` (~300 MB).
+  Obtain orbital element datasets from the Minor Planet Center (MPC).
+  Run the following command to download MPCORB.DAT (~300 MB) and NEAm00.txt automatically:
 
   ```bash
   wget-mpcorb-nea
   ```
+  
+  If the automatic download does not work, you can manually download `MPCORB.DAT` and `NEAm00.txt`, and save them in the `./data` directory as `MPCORB.DAT` and `NEAm00.txt`, respectively.
+
 
 - LCDB
 
