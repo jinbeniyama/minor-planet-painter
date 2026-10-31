@@ -30,3 +30,6 @@ script-files = [
     "scripts/plot_sssb_skymotion.py",
 ]
 
+
+[project.scripts]
+wget-mpcorb-nea = "minor_planet_painter.wget_MPCORB_NEA:main"
