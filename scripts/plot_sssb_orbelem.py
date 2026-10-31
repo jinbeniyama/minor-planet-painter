@@ -128,100 +128,77 @@ if __name__ == "__main__":
             return 5.0 * np.log10(
                 1329.0 / (D * np.sqrt(pv))
             )
+    # Figure 1: Orbital elements (a, e, and i) ==============================
 
-    # Figure 1: Orbital elements (e and i) ====================================
-
-    fig1 = plt.figure(figsize=(12, 8))
-    ax_e = fig1.add_axes([0.15, 0.60, 0.82, 0.35])
-    ax_i = fig1.add_axes([0.15, 0.12, 0.82, 0.35])
+    fig1 = plt.figure(figsize=(12, 11))
+    ax_a = fig1.add_axes([0.15, 0.72, 0.82, 0.22])
+    ax_e = fig1.add_axes([0.15, 0.42, 0.82, 0.22])
+    ax_i = fig1.add_axes([0.15, 0.12, 0.82, 0.22])
 
     # Histogram bins
+    bin_a = np.arange(0, 4.01, 0.01)
     bin_e = np.arange(0, 1.01, 0.01)
     bin_i = np.arange(0, 91, 1)
 
     if args.onlyNEA:
-        ax_e.hist(
-            e[mask_nea],
-            histtype="step",
-            bins=bin_e,
-            color="black",
-            linewidth=1.5,
-            label=f"NEA N={N_nea}"
-        )
-        ax_i.hist(
-            i[mask_nea],
-            histtype="step",
-            bins=bin_i,
-            color="black",
-            linewidth=1.5,
-            label=f"NEA N={N_nea}"
-        )
-
-        ax_e.set_ylabel("N")
-        ax_i.set_ylabel("N")
+        for ax, data, bins in [
+            (ax_a, a, bin_a),
+            (ax_e, e, bin_e),
+            (ax_i, i, bin_i),
+        ]:
+            ax.hist(
+                data[mask_nea],
+                histtype="step",
+                bins=bins,
+                color="black",
+                linewidth=1.5,
+                label=f"NEA N={N_nea}"
+            )
+            ax.set_ylabel("N")
 
     else:
-        ax_e.hist(
-            e[mask_mba],
-            histtype="step",
-            ls="solid",
-            bins=bin_e,
-            color=col_MBA,
-            linewidth=1.5,
-            label=f"MBA N={N_mba}",
-            density=True
-        )
-        ax_i.hist(
-            i[mask_mba],
-            histtype="step",
-            ls="solid",
-            bins=bin_i,
-            color=col_MBA,
-            linewidth=1.5,
-            label=f"MBA N={N_mba}",
-            density=True
-        )
+        for ax, data, bins in [
+            (ax_a, a, bin_a),
+            (ax_e, e, bin_e),
+            (ax_i, i, bin_i),
+        ]:
+            ax.hist(
+                data[mask_mba],
+                histtype="step",
+                ls="solid",
+                bins=bins,
+                color=col_MBA,
+                linewidth=1.5,
+                label=f"MBA N={N_mba}",
+                density=True
+            )
+            ax.hist(
+                data[mask_nea],
+                histtype="step",
+                ls="dashed",
+                bins=bins,
+                color=col_NEA,
+                linewidth=1.5,
+                label=f"NEA N={N_nea}",
+                density=True
+            )
+            ax.set_ylabel("Normalized fraction")
 
-        ax_e.hist(
-            e[mask_nea],
-            histtype="step",
-            ls="dashed",
-            bins=bin_e,
-            color=col_NEA,
-            linewidth=1.5,
-            label=f"NEA N={N_nea}",
-            density=True
-        )
-        ax_i.hist(
-            i[mask_nea],
-            histtype="step",
-            ls="dashed",
-            bins=bin_i,
-            color=col_NEA,
-            linewidth=1.5,
-            label=f"NEA N={N_nea}",
-            density=True
-        )
-
-        ax_e.set_ylabel("Normalized fraction")
-        ax_i.set_ylabel("Normalized fraction")
-
+    ax_a.set_xlabel("Semimajor axis a [au]")
     ax_e.set_xlabel("Eccentricity")
     ax_i.set_xlabel("Inclination [deg]")
 
+    ax_a.set_xlim(0, 4)
     ax_e.set_xlim(0, 1)
     ax_i.set_xlim(0, 90)
 
-    ax_e.legend(fontsize=12)
-    ax_i.legend(fontsize=12)
-
-    # Align y-axis labels
-    x, y = -0.08, 0.5
-    ax_e.yaxis.set_label_coords(x, y)
-    ax_i.yaxis.set_label_coords(x, y)
+    for ax in [ax_a, ax_e, ax_i]:
+        ax.legend(fontsize=12)
+        ax.yaxis.set_label_coords(-0.08, 0.5)
+        ax.tick_params(axis="x", pad=5)
 
     fig1.savefig(out_path, dpi=300, bbox_inches="tight")
-    print(f"  Figure is saved as {out_path}")
+    print(f"  Figure is saved as {out_path}")   
 
     # Figure 2: Absolute magnitude H ==========================================
     # Histogram helper
