@@ -126,13 +126,18 @@ plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 ### 2. Orbital elements of minor bodies
 
 ```bash
-# Plot only NEAs (output figure is shown below)
+# Plot all SSSBs
 plot_sssb_orbelem.py --onlyNEA
-
-# NEA pairs (in prep.)
 ```
 
-![Orbital elements of minor bodies](fig/e_NEA.jpg)
+![Orbital elements of minor bodies (e and i)](fig/orbelem.jpg)
+![Orbital elements of minor bodies (H)](fig/orbelem_H.jpg)
+
+```bash
+# Plot only NEAs 
+plot_sssb_orbelem.py --onlyNEA
+```
+
 
 ### 3. Angular distance of minor bodies
 
