@@ -127,10 +127,10 @@ plot_sssb_xy.py --MPCORB MPCORB_original.DAT
 
 ```bash
 # Plot all SSSBs
-plot_sssb_orbelem.py --onlyNEA
+plot_sssb_orbelem.py
 ```
 
-![Orbital elements of minor bodies (e and i)](fig/orbelem.jpg)
+![Orbital elements of minor bodies (a, e, and i)](fig/orbelem.jpg)
 ![Orbital elements of minor bodies (H)](fig/orbelem_H.jpg)
 
 ```bash
