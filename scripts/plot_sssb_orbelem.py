@@ -129,6 +129,100 @@ if __name__ == "__main__":
                 1329.0 / (D * np.sqrt(pv))
             )
 
+    # Figure 1: Orbital elements (e and i) ====================================
+
+    fig1 = plt.figure(figsize=(12, 8))
+    ax_e = fig1.add_axes([0.15, 0.60, 0.82, 0.35])
+    ax_i = fig1.add_axes([0.15, 0.12, 0.82, 0.35])
+
+    # Histogram bins
+    bin_e = np.arange(0, 1.01, 0.01)
+    bin_i = np.arange(0, 91, 1)
+
+    if args.onlyNEA:
+        ax_e.hist(
+            e[mask_nea],
+            histtype="step",
+            bins=bin_e,
+            color="black",
+            linewidth=1.5,
+            label=f"NEA N={N_nea}"
+        )
+        ax_i.hist(
+            i[mask_nea],
+            histtype="step",
+            bins=bin_i,
+            color="black",
+            linewidth=1.5,
+            label=f"NEA N={N_nea}"
+        )
+
+        ax_e.set_ylabel("N")
+        ax_i.set_ylabel("N")
+
+    else:
+        ax_e.hist(
+            e[mask_mba],
+            histtype="step",
+            ls="solid",
+            bins=bin_e,
+            color=col_MBA,
+            linewidth=1.5,
+            label=f"MBA N={N_mba}",
+            density=True
+        )
+        ax_i.hist(
+            i[mask_mba],
+            histtype="step",
+            ls="solid",
+            bins=bin_i,
+            color=col_MBA,
+            linewidth=1.5,
+            label=f"MBA N={N_mba}",
+            density=True
+        )
+
+        ax_e.hist(
+            e[mask_nea],
+            histtype="step",
+            ls="dashed",
+            bins=bin_e,
+            color=col_NEA,
+            linewidth=1.5,
+            label=f"NEA N={N_nea}",
+            density=True
+        )
+        ax_i.hist(
+            i[mask_nea],
+            histtype="step",
+            ls="dashed",
+            bins=bin_i,
+            color=col_NEA,
+            linewidth=1.5,
+            label=f"NEA N={N_nea}",
+            density=True
+        )
+
+        ax_e.set_ylabel("Normalized fraction")
+        ax_i.set_ylabel("Normalized fraction")
+
+    ax_e.set_xlabel("Eccentricity")
+    ax_i.set_xlabel("Inclination [deg]")
+
+    ax_e.set_xlim(0, 1)
+    ax_i.set_xlim(0, 90)
+
+    ax_e.legend(fontsize=12)
+    ax_i.legend(fontsize=12)
+
+    # Align y-axis labels
+    x, y = -0.08, 0.5
+    ax_e.yaxis.set_label_coords(x, y)
+    ax_i.yaxis.set_label_coords(x, y)
+
+    fig1.savefig(out_path, dpi=300, bbox_inches="tight")
+    print(f"  Figure is saved as {out_path}")
+
     # Figure 2: Absolute magnitude H ==========================================
     # Histogram helper
     def plot_histograms(ax, x, bins, mask, label, color, ls):
