@@ -93,7 +93,7 @@ Make sure that you are using the intended Python environment before installing.
   Obtain datasets from MPC. Orbital elements of all minor planets (`MPCORB.DAT`) and NEAs (`NEAm00.txt`) are saved in `./data`.
 
   ```bash
-  wget_MPCORB_NEA.sh
+  wget-mpcorb-nea
   ```
 
 - LCDB
