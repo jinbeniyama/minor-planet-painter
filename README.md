@@ -138,6 +138,15 @@ plot_sssb_orbelem.py
 plot_sssb_orbelem.py --onlyNEA
 ```
 
+### 3. Show observing geometry
+```
+python scripts/plot_sssb_loc.py --asteroid "Itokawa" \
+    --date0 2000-01-01 --date1 2005-02-10 --width 1.7 \
+    --obsdate 2001-01-01,2002-01-01 --obsloc 500,500 --outtype jpg
+```
+
+![Observing geometry of Itokawa](fig/Itokawa_loc.jpg)
+
 
 ### 3. Angular distance of minor bodies
 
